@@ -69,7 +69,7 @@ static void memfile_close(MemFile* mem_file)
 
 static io_off_t memfile_read(MemFile* mem_file, io_off_t off, char* buf, size_t size)
 {
-    io_off_t cpy_size = mem_file->len < off + size ? mem_file->len : off + size;
+    io_off_t cpy_size = mem_file->len < off + size ? mem_file->len - off : size;
     memcpy(buf, mem_file->mem + off, cpy_size);
     return cpy_size;
 }
