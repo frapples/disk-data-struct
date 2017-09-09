@@ -1,7 +1,7 @@
 #include "cmockery-inc.h"
 #include "io.h"
 
-void test_memfile_io(IoFile* f, io_off_t off) {
+void test_memfile_io(io_file_t* f, io_off_t off) {
     char buf[1024];
 
     char data[] = "abdefgiajd";
@@ -15,7 +15,7 @@ void test_memfile_io(IoFile* f, io_off_t off) {
 
 void test_io_memfile(void **state)
 {
-    IoFile* f = io_open(":memory:", NULL);
+    io_file_t* f = io_open(":memory:", NULL);
 
     char buf[1024];
     assert_int_equal(io_read(f, 0, buf, sizeof(buf)), 0);

@@ -11,20 +11,20 @@ typedef struct {
     char* mem;
     io_off_t len;
     io_off_t size;
-}MemFile;
+}mem_file_t;
 
 typedef struct {
     union {
         FILE* file;
-        MemFile* mem_file;
+        mem_file_t* mem_file;
     };
     bool is_mem;
-}IoFile;
+}io_file_t;
 
 
-IoFile* io_open(const char* file_path, const char* mode);
-size_t io_read(IoFile* file, io_off_t off, char* buf, size_t size);
-size_t io_write(IoFile* file, io_off_t off, char* buf, size_t size);
-void io_close(IoFile* file);
+io_file_t* io_open(const char* file_path, const char* mode);
+size_t io_read(io_file_t* file, io_off_t off, char* buf, size_t size);
+size_t io_write(io_file_t* file, io_off_t off, char* buf, size_t size);
+void io_close(io_file_t* file);
 
 #endif /* __IO_H__RAND5104581976470232452288340069304669069 */
