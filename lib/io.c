@@ -3,6 +3,21 @@
 #include <string.h>
 #include <stdlib.h>
 
+typedef struct {
+    char* mem;
+    io_off_t len;
+    io_off_t size;
+}  mem_file_t;
+
+struct io_file_t {
+    union {
+        FILE* file;
+        mem_file_t* mem_file;
+    };
+    bool is_mem;
+};
+
+
 static void memfile_init(mem_file_t* mem_file);
 static void memfile_close(mem_file_t* mem_file);
 static io_off_t memfile_read(mem_file_t* mem_file, io_off_t off, char* buf, size_t size);

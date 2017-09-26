@@ -1,0 +1,12 @@
+#ifndef __PAGE_H__RAND1941219049611804134921828417981657522
+#define __PAGE_H__RAND1941219049611804134921828417981657522
+
+#include <stdint.h>
+
+
+#define MAGIC_NUMBER 0xabcd
+
+typedef struct file_header_t file_header_t;
+
+
+#endif /* __PAGE_H__RAND1941219049611804134921828417981657522 */

@@ -6,20 +6,7 @@
 #include <stdbool.h>
 
 typedef uint64_t io_off_t;
-
-typedef struct {
-    char* mem;
-    io_off_t len;
-    io_off_t size;
-}mem_file_t;
-
-typedef struct {
-    union {
-        FILE* file;
-        mem_file_t* mem_file;
-    };
-    bool is_mem;
-}io_file_t;
+typedef struct io_file_t io_file_t;
 
 
 io_file_t* io_open(const char* file_path, const char* mode);
