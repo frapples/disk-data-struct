@@ -15,7 +15,7 @@
 typedef struct btree_node_t btree_node_t;
 typedef struct btree_t btree_t;
 
-void btree_init(btree_t* btree, file_header_t* file_header, io_off_t root_node);
+void btree_init(btree_t* btree, file_pages_t* file_pages, io_off_t root_node);
 
 void btree_open(btree_t* btree);
 void btree_close(btree_t* btree);

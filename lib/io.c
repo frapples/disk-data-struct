@@ -21,7 +21,7 @@ struct io_file_t {
 static void memfile_init(mem_file_t* mem_file);
 static void memfile_close(mem_file_t* mem_file);
 static io_off_t memfile_read(mem_file_t* mem_file, io_off_t off, char* buf, size_t size);
-static io_off_t memfile_write(mem_file_t* mem_file, io_off_t off, char* buf, size_t size);
+static io_off_t memfile_write(mem_file_t* mem_file, io_off_t off, const char* buf, size_t size);
 
 io_file_t* io_open(const char* file_path, const char* mode)
 {
@@ -50,7 +50,7 @@ io_off_t io_read(io_file_t* file, io_off_t off, char* buf, size_t size)
     }
 }
 
-io_off_t io_write(io_file_t* file, io_off_t off, char* buf, size_t size)
+io_off_t io_write(io_file_t* file, io_off_t off, const char* buf, size_t size)
 {
     if (file->is_mem) {
         return memfile_write(file->mem_file, off, buf, size);
@@ -89,7 +89,7 @@ static io_off_t memfile_read(mem_file_t* mem_file, io_off_t off, char* buf, size
     return cpy_size;
 }
 
-static io_off_t memfile_write(mem_file_t* mem_file, io_off_t off, char* buf, size_t size)
+static io_off_t memfile_write(mem_file_t* mem_file, io_off_t off, const char* buf, size_t size)
 {
     if (off + size > mem_file->size) {
         mem_file->size *= 2;

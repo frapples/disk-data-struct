@@ -2,11 +2,17 @@
 #define __PAGE_H__RAND1941219049611804134921828417981657522
 
 #include <stdint.h>
+#include "io.h"
 
 
-#define MAGIC_NUMBER 0xabcd
+typedef struct file_pages_t file_pages_t;
 
-typedef struct file_header_t file_header_t;
+typedef uint32_t page_no_t;
+#define PAGE_NO_NULL 0
 
+void file_pages_init(file_pages_t* file_pages, io_file_t* io_file);
+void file_pages_format(io_file_t* io_file);
+void page_read(file_pages_t* file_pages, page_no_t no, char buf[]);
+void page_write(file_pages_t* file_pages, page_no_t no, const char buf[]);
 
 #endif /* __PAGE_H__RAND1941219049611804134921828417981657522 */
